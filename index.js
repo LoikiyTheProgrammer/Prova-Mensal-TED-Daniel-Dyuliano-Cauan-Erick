@@ -1,6 +1,5 @@
 import { criarPilha, inserirPilha, retirarPilha, verificaExistencia} from './pilha.js'
-    // ...
-    // Objeto exemplo
+
     let alunos = [
         {
             titulo: "Dom Casmurro",
@@ -28,10 +27,8 @@ import { criarPilha, inserirPilha, retirarPilha, verificaExistencia} from './pil
             genero: "clássico",
         },
     ]
-    // ...
-    let pilha = criarPilha(tamanhoX)
-    // ...
+
+    let pilha = criarPilha(5)
     inserirPilha(pilha, livro)
     retirarPilha(pilha, livro)
-    // ,,,
     verificaExistencia(pilha, tituloDoLivro)
