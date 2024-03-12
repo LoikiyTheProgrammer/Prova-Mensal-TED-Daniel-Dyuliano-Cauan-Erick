@@ -2,33 +2,35 @@ export function criarPilha(tamanhoX = 5) {
     return [...new Array(tamanhoX)]
 }
 
-export function inserirPilha(pilha, livros){
-    const spacePosition = pilha.indexOf(undefined)
-    if(spacePosition === -1){
-        console.log('Sem espaço')
-        return
+export function inserirPilha(pilha, livro){
+    const lugarVazio = pilha.findIndex(elemento => elemento === undefined);
+    if (lugarVazio !== -1) {
+        pilha[lugarVazio] = livro;
+        console.log(`${livro.titulo} inserido na pilha`)
     }
-
-    pilha[spacePosition] = livros
 }
 
 export function retirarPilha(pilha){
-    const lastItemPosition = pilha.indexOf(undefined)
-    const selectedItem = pilha[lastItemPosition -1]
-    if(lastItemPosition === -1){
-        for(let i = 0; i < pilha.length; i++){
-            pilha.pop()
-            console.log(pilha.pop())
-            return
-        }
+    const ultimoLivroPosicao = pilha.findIndex(livro => livro !== undefined && pilha.includes(livro));
+    const ultimoLivro = pilha[ultimoLivroPosicao];
+    
+    if (ultimoLivro !== undefined) {
+        pilha.splice(ultimoLivroPosicao, 1);
+        console.log(`${ultimoLivro.titulo} retirado da pilha`)
     }
-
-    pilha.splice(lastItemPosition -1, 1, undefined)
-    return selectedItem
 }
 
-export function verificaExistencia(pilha, existe){
-    for(let j = 0; j < pilha.length; j++){
-        if(pilha[i].titulo === existe[i])
+export function verificaExistencia(pilha, tituloDoLivro) {
+    const livroNaPilha = pilha.find(livro => livro && livro.titulo === tituloDoLivro);
+    if (livroNaPilha) {
+        console.log(`${tituloDoLivro} está na pilha`)
+    }
+}
+
+export function verificaExistencia(pilha, item){
+    for(let i = 0; i < pilha.length; i++){
+        if(pilha[i].titulo === item.titulo){
+            console.log("O livro existe")
+        }
     }
 }
